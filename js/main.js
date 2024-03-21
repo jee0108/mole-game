@@ -5,7 +5,8 @@ var gameEnded = false;
 var timerId;
 
 var closeBtn = document.getElementById("close");
-$(closeBtn).attr("onclick", false);
+//$(closeBtn).attr("onclick", false);
+document.getElementById('close').removeEventListener('click', closePage);
 
 var audio = document.getElementById('audio');
 var audio2 = document.getElementById('audio2');
@@ -73,8 +74,8 @@ function mainPage(){
 var startClick = false;
 
 function startGame(){
-    $(closeBtn).attr("onclick", "closePage();");
-
+    document.getElementById('close').addEventListener('click', closePage);
+    audio.currentTime = 0;
     audio.play();
 
     requestId = 'GM-002';
@@ -198,6 +199,7 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
         var moleElement = this;
         
         if (moleElement.id == hitPosition) { // hitPosition 두더지가 나오는 포지션
+            audio2.currentTime = 0;
             audio2.play();
 
             result += 100;
