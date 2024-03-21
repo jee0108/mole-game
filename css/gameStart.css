@@ -1,0 +1,217 @@
+#main{
+    height: 900px;
+    width: 1200px;
+    margin: auto;
+    /*margin-top: 200px;
+    display:flex; 
+    justify-content:center; 
+    align-items:center;*/
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    place-items: center;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+}
+#howList{
+    border: 1px solid black;
+    background-color: rgb(221, 221, 221);
+    width: 1000px;
+    height: 700px;
+    /*margin: auto;*/
+
+    position:absolute;
+    top: 55%;
+    left: 50%;
+    place-items: center;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+#howList h1{
+    padding-top: 20px;
+    text-align: center;
+}
+#howList p{
+    padding-left: 20px;
+    font-size: 20px;
+}
+#gameContent{
+    height: 900px;
+    width: 1150px;
+}
+#content{
+    margin: auto;
+    height: 670px;
+    width: 1000px;
+}
+.boxList{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    height: 200px;
+    width: 270px;
+    border: 1px solid black;
+    background-color: rgb(224, 224, 224);
+    float: left;
+    position: static;
+    left: 2%;
+}
+.hole{
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 80px;
+    width: 99%;
+    background-color: rgb(78, 49, 6);
+    position: relative;
+    top: 80px;
+}
+#scoreList{
+    height: 150px;
+    width: 1000px;
+    display: inline-block;
+}
+#scoreList #score{
+    padding-left: 30px;
+    font-size: 30px;
+    height: 20px;
+}
+#scoreList #bestScore{
+    padding-left: 30px;
+    font-size: 20px;
+    height: 20px;
+}
+#close{
+    float: right;
+    margin-top: 20px;
+    width: 130px;
+    height: 100px;
+    font-size: 50px;
+    text-align: right;
+    cursor: pointer;
+}
+#start{
+    font-size: 50px;
+    text-align: center;
+}
+.display-none{
+    display: none;
+}
+.display-first{
+    width: 400px;
+    height: 350px;
+    border: 1px solid black;
+    z-index: 10;
+    background-color: white;
+    
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    place-items: center;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+#modalPage, #modalPage2{
+    padding-top: 10px;
+}
+#modalPage .textSize{
+    font-size: 30px;
+    text-align: center;
+}
+.modalBtn{
+    background-color: white;
+    width: 80px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    margin-left: 65px;
+    margin-right: 40px;
+    cursor: pointer;
+}
+.modalBtn2{
+    background-color: white;
+    width: 80px;
+    height: 40px;
+    font-size: 40px;
+    text-align: center;
+    margin-left: 65px;
+    margin-right: 40px;
+    border: none;
+    cursor: pointer;
+}
+.box{
+    position: relative
+}
+.mole{
+    position: absolute;
+    bottom: 5%;
+    left: 22%;
+    cursor: pointer;
+}
+.gameOver{
+    font-size: 35px;
+    text-align: center;
+}
+.score-text{
+    font-size: 40px;
+    text-align: center;
+}
+.best-text{
+    font-size: 30px;
+    text-align: center;
+}
+#warning{
+    margin-top: 20px;
+}
+/*
+@-webkit-keyframes moleEnter {
+    0% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(50%);
+        transform: translateY(50%);
+    }
+}
+
+@-ms-keyframes moleEnter {
+    0% {
+        opacity: 1;
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        -ms-transform: translateY(50%);
+        transform: translateY(50%);
+    }
+}
+*/
+@keyframes moleEnter {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(50%);
+    }
+}
+.mole-enter {
+    animation: moleEnter 1s forwards;
+    -webkit-animation: moleEnter 1s forwards;
+    -ms-animation: moleEnter 1s forwards;
+}

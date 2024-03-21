@@ -1,0 +1,73 @@
+
+#main{
+    height: 900px;
+    width: 1200px;
+    margin: auto;
+    /*margin-top: 200px;
+    display:flex; 
+    justify-content:center; 
+    align-items:center;*/
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    place-items: center;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+}
+.wrap{
+    border: 1px solid rgb(26, 25, 25);
+    height: 750px;
+    width: 900px;
+    border-radius: 100px;
+
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    place-items: center;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+}
+
+.mainText{
+    text-align: center;
+    height: 100px;
+    font-size: 40px;
+    margin-top: 80px;
+}
+
+#bottom{
+    border-radius: 20px;
+    border : 1px solid black; 
+    width: 700px; 
+    height:  250px;
+    margin: auto;
+    /*margin-top: 100px;*/
+    position:absolute;
+    top: 60%;
+    left: 50%;
+    place-items: center;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+}
+#gameBtn{   
+    height: 99%;
+    width: 99%;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    font-size: 50px;
+    text-align: center;
+}
