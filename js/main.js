@@ -4,6 +4,12 @@ var clicked = false;
 var gameEnded = false;
 var timerId;
 
+var closeBtn = document.getElementById("close");
+$(closeBtn).attr("onclick", false);
+
+var audio = document.getElementById('audio');
+var audio2 = document.getElementById('audio2');
+
 window.onload = function() {
     var storedBestScore = localStorage.getItem('bestScore');
 
@@ -67,9 +73,8 @@ function mainPage(){
 var startClick = false;
 
 function startGame(){
-    var audio = new Audio('../sound/cruising-down-8bit-lane-159615.mp3');//배경음
-    audio.autoplay = true;
-    audio.loop = true;
+    $(closeBtn).attr("onclick", "closePage();");
+
     audio.play();
 
     requestId = 'GM-002';
@@ -135,6 +140,7 @@ function gameOver(){
     document.getElementById('final-bestScore').innerHTML =  'BEST SCORE : ' + bestScore;
 
     document.getElementById('bestScore').innerHTML =  'BEST SCORE : ' + bestScore;
+
 }
 
 function missMole(){
@@ -192,8 +198,6 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
         var moleElement = this;
         
         if (moleElement.id == hitPosition) { // hitPosition 두더지가 나오는 포지션
-
-            var audio2 = new Audio('../sound/flying_pan.mp3'); // 두더지 잡았을때 효과음
             audio2.play();
 
             result += 100;
