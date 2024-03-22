@@ -5,7 +5,7 @@ var gameEnded = false;
 var timerId;
 
 var closeBtn = document.getElementById("close");
-//$(closeBtn).attr("onclick", false);
+$(closeBtn).attr("onclick", false);
 document.getElementById('close').removeEventListener('click', closePage);
 
 var audio = document.getElementById('audio');
