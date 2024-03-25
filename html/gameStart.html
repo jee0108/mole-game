@@ -19,7 +19,9 @@
                 <p id="score">SCORE&nbsp; &nbsp; 0</p>
                 <p id="bestScore">BEST SCORE : 0</p>
             </div>
-            <div id="close">✕</div>
+            <div id="close">
+                <button type="button" id="closeButton" disabled onclick="closePage();">✕</button>
+            </div>
             
             <div id="modalPage" class="display-first display-none">
                 <div class="textSize" id="warning">WARNING!</div>
@@ -51,8 +53,11 @@
                 <p>- 빨라지는 속도에 맞춰가며 두더지를 없애고 BEST SCORE를 달성한다.</p>
                 <p>- 두더지를 못 잡을 경우, 즉시 GAME OVER 된다.</p>
                 
-                <br><br><br><br>
-                <div id="start" onclick="startGame();">▶</div>
+                <br><br><br>
+                <div id="start">
+                    <button type="button" id="playButton" onclick="startGame();">▶</button>
+                </div>
+                <br>
             </div>
 
             <div id="content">

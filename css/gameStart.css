@@ -216,3 +216,32 @@
     -webkit-animation: moleEnter 1s forwards;
     -ms-animation: moleEnter 1s forwards;
 }
+
+#closeButton{
+    border: none;
+    background-color: white;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+#playButton{
+    border: none;
+    background-color: rgb(221, 221, 221);
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.animated-image {
+    display: block;
+    height: auto;
+    animation: slide-up 1s ease-in-out; /* slide-up 애니메이션을 1초 동안 재생 */
+  }
+  
+  @keyframes slide-up {
+    0% {
+      transform: translateY(50%); /* 초기 위치: 아래에서 위로 올라가는 효과 */
+    }
+    100% {
+      transform: translateY(0); /* 최종 위치: 올라간 상태로 설정 */
+    }
+  }

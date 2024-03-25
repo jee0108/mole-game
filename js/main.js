@@ -3,11 +3,16 @@ var html;
 var clicked = false;
 var gameEnded = false;
 var timerId;
-
-document.getElementById('close').removeEventListener('click', closePage);
+var closeBtn = document.getElementById('closeButton');
+//document.getElementById('close').removeEventListener('click', closePage);
 
 var audio = document.getElementById('audio');
 var audio2 = document.getElementById('audio2');
+
+var holes = document.getElementsByClassName('hole');
+holes = Array.prototype.slice.call(holes);
+
+var score = document.getElementById('score');
 
 window.onload = function() {
     var storedBestScore = localStorage.getItem('bestScore');
@@ -23,8 +28,8 @@ window.onload = function() {
 };
 
 var scoreElement = document.getElementById('score').innerHTML;
-var bestScoreElement = document.getElementById('bestScore').innerHTML;// 기본 bestScore
-var bestScoreText = document.getElementById('final-bestScore').innerHTML;// 모달창 bestScore
+var bestScoreElement = document.getElementById('bestScore').innerHTML;      // 기본 bestScore
+var bestScoreText = document.getElementById('final-bestScore').innerHTML;   // 모달창 bestScore
 var bestScore = localStorage.getItem('bestScore');
 
 if(bestScore === null || isNaN(bestScore)){
@@ -32,10 +37,6 @@ if(bestScore === null || isNaN(bestScore)){
 }else{
     bestScore = parseInt(bestScore);
 }
-
-var holes = document.getElementsByClassName('hole');
-holes = Array.prototype.slice.call(holes);
-var score = document.getElementById('score');
 
 function loadPage(requestId){
 
@@ -72,13 +73,14 @@ function mainPage(){
 var startClick = false;
 
 function startGame(){
-    document.getElementById('close').addEventListener('click', closePage);
+    //document.getElementById('close').addEventListener('click', closePage);
     audio.currentTime = 0;
     audio.play();
 
     requestId = 'GM-002';
     loadPage(requestId);
 
+    closeBtn.disabled = false;
     moveMole();
 }
 
@@ -95,6 +97,7 @@ function closePage(){
 
 function continueGame(){
     gameEnded = false;
+
     if(result == 0){
         score.innerHTML = 'SCORE ' + result;
     }
@@ -121,13 +124,13 @@ function mainPage(){
 
 function gameOver(){
 
-    for (var i = 0; i < holes.length; i++) {//두더지 클릭 못하게
+    for (var i = 0; i < holes.length; i++) {    //두더지 클릭 못하게
         holes[i].removeEventListener('click', handleMoleClick);
     }
 
     gameEnded = true;
 
-    var audio3 = new Audio('../sound/blip01.mp3'); //효과음
+    var audio3 = new Audio('../sound/blip01.mp3');  //효과음
     audio3.play();
     clearInterval(timerId);
 
@@ -183,6 +186,7 @@ function randomHole() { // 번호 랜덤 생성
     imgElement.style.position = 'relative';
     imgElement.style.left = '22%';
     imgElement.style.bottom = '90%';
+    imgElement.classList.add("animated-image");
 
     randomHole.appendChild(imgElement); 
 
@@ -191,12 +195,12 @@ function randomHole() { // 번호 랜덤 생성
     clicked = false;    // 두더지를 놓쳤을 경우
 }
 
-function handleMoleClick(event) { // 두더지를 클릭했을때
+function handleMoleClick(event) {   // 두더지를 클릭했을때
    
     if(!clicked && !gameEnded){
         var moleElement = this;
         
-        if (moleElement.id == hitPosition) { // hitPosition 두더지가 나오는 포지션
+        if (moleElement.id == hitPosition) {    // hitPosition: 두더지가 나오는 포지션
             audio2.currentTime = 0;
             audio2.play();
 
@@ -226,8 +230,7 @@ function handleMoleClick(event) { // 두더지를 클릭했을때
                 setTimeout(function() {
                     moleElement.removeChild(imgElement2);
                     moleElement.addEventListener('click', handleMoleClick);
-                }, 250);
-                
+                }, 250);   
             }
 
             gameEnded = false;
@@ -250,7 +253,7 @@ for (var i = 0; i < holes.length; i++) {
     hole.addEventListener('click', handleMoleClick);
 }
 
-function moveMole() { // 점수가 높아질수록 빨라짐
+function moveMole() {   // 점수가 높아질수록 빨라짐
 
     var interval = 3000; 
 
@@ -265,7 +268,6 @@ function moveMole() { // 점수가 높아질수록 빨라짐
     }
 
     clearInterval(timerId);
-
     timerId = setInterval(function() {
 
     if(!clicked){
@@ -274,7 +276,6 @@ function moveMole() { // 점수가 높아질수록 빨라짐
     else{
         randomHole();
     } 
-
     }, interval);
 }
 
