@@ -1,21 +1,20 @@
-var requestId;
-var html;
-var clicked = false;
-var gameEnded = false;
-var timerId;
-var closeBtn = document.getElementById('closeButton');
-//document.getElementById('close').removeEventListener('click', closePage);
+var requestId;  // 화면 바뀌는 부분 저장하기 위해 사용
+var html;       // 동일
+var clicked = false;    // 두더지 클릭했는지 여부 확인용
+var gameEnded = false;  // 게임 종료 확인 여부용
+var timerId;            // 두더지 올라오는 시간 저장 용
+var closeBtn = document.getElementById('closeButton');  // 닫기버튼
 
-var audio = document.getElementById('audio');
-var audio2 = document.getElementById('audio2');
+var audio = document.getElementById('audio');   // 배경음악
+var audio2 = document.getElementById('audio2'); // 두더지 잡기 효과음
 
-var holes = document.getElementsByClassName('hole');
+var holes = document.getElementsByClassName('hole');    // 두더지 나오는 구멍들 전체
 holes = Array.prototype.slice.call(holes);
 
-var score = document.getElementById('score');
+var score = document.getElementById('score');           // 현재 점수
 
 window.onload = function() {
-    var storedBestScore = localStorage.getItem('bestScore');
+    var storedBestScore = localStorage.getItem('bestScore');    // 최고점수
 
     if(storedBestScore === null || isNaN(storedBestScore)){
         storedBestScore = 0;
@@ -27,7 +26,7 @@ window.onload = function() {
 
 };
 
-var scoreElement = document.getElementById('score').innerHTML;
+var scoreElement = document.getElementById('score').innerHTML;              // 점수 바뀔때 사용할 용도
 var bestScoreElement = document.getElementById('bestScore').innerHTML;      // 기본 bestScore
 var bestScoreText = document.getElementById('final-bestScore').innerHTML;   // 모달창 bestScore
 var bestScore = localStorage.getItem('bestScore');
@@ -40,19 +39,19 @@ if(bestScore === null || isNaN(bestScore)){
 
 function loadPage(requestId){
 
-    if(requestId === 'GM-001'|| requestId === 'lose'){
-        html = 'index.html';
+    if(requestId === 'GM-001'|| requestId === 'lose'){  
+        html = 'index.html';    // 초기화면
     }
     else if(requestId === 'GM-002'){
-        document.querySelector('#howList').classList.add('display-none');
+        document.querySelector('#howList').classList.add('display-none');   // 설명모달
         return;
     }
     else if(requestId ==='GM-007'){
-        document.querySelector('#modalPage').classList.remove('display-none');
+        document.querySelector('#modalPage').classList.remove('display-none');  // 게임종료모달
         return;
     }
     else if(requestId === 'GM-008'){
-        html = 'gameStart.html';
+        html = 'gameStart.html';    // 게임시작화면
     }
     if (requestId !== 'lose') {
         localStorage.setItem('bestScore', bestScore);
@@ -60,20 +59,19 @@ function loadPage(requestId){
     location.href= html;
 }
 
-function ready(){
+function ready(){   // 게임 준비
     requestId = 'GM-008';
     loadPage(requestId);
 }
 
-function mainPage(){
+function mainPage(){    // 초기화면
     requestId = 'GM-001';
     loadPage(requestId);
 }
 
 var startClick = false;
 
-function startGame(){
-    //document.getElementById('close').addEventListener('click', closePage);
+function startGame(){   //게임 시작
     audio.currentTime = 0;
     audio.play();
 
@@ -84,7 +82,7 @@ function startGame(){
     moveMole();
 }
 
-function closePage(){
+function closePage(){   // 게임종료
     clearTimeout(timerId);
     requestId = 'GM-007';
     loadPage(requestId);
@@ -95,7 +93,7 @@ function closePage(){
     modalPage.classList.remove('display-none');
 }
 
-function continueGame(){
+function continueGame(){    // 게임 이어하기
     gameEnded = false;
 
     if(result == 0){
@@ -108,7 +106,7 @@ function continueGame(){
     moveMole(); 
 }
 
-function loseScore(){
+function loseScore(){   // 중간에 게임종료
     bestScore = 0;
     storedBestScore = 0;
     result = 0;
@@ -117,12 +115,7 @@ function loseScore(){
     loadPage(requestId);
 }
 
-function mainPage(){
-    requestId = 'GM-001';
-    loadPage(requestId);
-}
-
-function gameOver(){
+function gameOver(){ // 게임오버 화면
 
     for (var i = 0; i < holes.length; i++) {    //두더지 클릭 못하게
         holes[i].removeEventListener('click', handleMoleClick);
@@ -145,7 +138,7 @@ function gameOver(){
 
 }
 
-function missMole(){
+function missMole(){    // 두더지 놓쳤을때
     clearInterval(timerId);
     var moleHole = document.getElementById(hitPosition);
     var moleImage = moleHole.querySelector('img');
@@ -164,7 +157,7 @@ function missMole(){
 
 var result = 0;
 
-var img = new Image();
+var img = new Image();  // 두더지 이미지
 img.src = "../img/mole1-removebg-preview.png";
 img.width = "150";
 img.height = "150";
@@ -178,7 +171,7 @@ function randomHole() { // 번호 랜덤 생성
     var randomIndex = Math.floor(Math.random() * holes.length);
     var randomHole = holes[randomIndex];
 
-    var imgElement = document.createElement('img'); 
+    var imgElement = document.createElement('img'); // 두더지이미지
     imgElement.src = img.src; 
     imgElement.width = img.width; 
     imgElement.height = img.height;
@@ -212,7 +205,7 @@ function handleMoleClick(event) {   // 두더지를 클릭했을때
                 bestScoreText.innerHTML = 'BEST SCORE : ' + bestScore;
             }
 
-            var imgElement2 = new Image(); 
+            var imgElement2 = new Image();  // 두더지 클릭했을때, >< 두더지 이미지
             imgElement2.src = "../img/mole2-removebg-preview.png"; 
             imgElement2.width = "150"; 
             imgElement2.height = "150"; 
