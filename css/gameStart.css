@@ -232,16 +232,19 @@
 }
 
 .animated-image {
-    display: block;
-    height: auto;
-    animation: slide-up 1s ease-in-out; /* slide-up 애니메이션을 1초 동안 재생 */
+    position: relative;
+    bottom: 20px;
+    left: 22%;
+    animation: mole-up 0.4s ease-out;
   }
   
-  @keyframes slide-up {
+  @keyframes mole-up {
     0% {
-      transform: translateY(50%); /* 초기 위치: 아래에서 위로 올라가는 효과 */
+      transform: translateY(30px);
+      opacity: 0;
     }
     100% {
-      transform: translateY(0); /* 최종 위치: 올라간 상태로 설정 */
+      transform: translateY(0);
+      opacity: 1;
     }
   }
